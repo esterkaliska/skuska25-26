@@ -1,22 +1,22 @@
-class Zvyraznovac:
+class Highlighter:
     def __init__(self):
-        self.samohlasky = "aeiyoôuáéíýóúůäAEIYOÔUÁÉÍÝÓÚŮÄ"
-        self.povolene = ("abcdefghijklmnopqrstuvwxyzáéíýóúůäčďľĺňŕšťž"
+        self.vowels = "aeiyoôuáéíýóúůäAEIYOÔUÁÉÍÝÓÚŮÄ"
+        self.allowed = ("abcdefghijklmnopqrstuvwxyzáéíýóúůäčďľĺňŕšťž"
                          "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÝÓÚŮÄČĎĽĹŇŔŠŤŽ"
                          "0123456789 ,.?!;")
 
-    def spracuj_text(self, text):
-        vysledok = ""
-        for znak in text:
-            if znak in self.samohlasky:
-                vysledok += f"({znak})"
-            elif znak in self.povolene:
-                vysledok += znak
-        return vysledok
+    def process_text(self, text):
+        result = ""
+        for symbol in text:
+            if symbol in self.vowels:
+                result += f"({symbol})"
+            elif symbol in self.allowed:
+                result += symbol
+        return result
 
-funkcia = Zvyraznovac()
+function = Highlighter()
 
-text = input("Zadaj text: ")
-vysledok = funkcia.spracuj_text(text)
+text = input("Input text (allowed languages: English, Slovak, Czech): ")
+result = function.process_text(text)
 
-print("Výsledok:", vysledok)
+print("Result:", result)
